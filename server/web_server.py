@@ -17,7 +17,6 @@ from authentication import get_user_dn, parse_dn
 import urllib
 from collections import OrderedDict
 import ast
-import MySQLdb
 
 
 try:
@@ -180,6 +179,7 @@ PRODUCTION_API_PREFIX+="/"+MPO_API_VERSION
 
 def swimdata_connect():
     if SWIM_DB_HOST<>"" and SWIM_DB_USER<>"" and SWIM_DB_PW<>"" and SWIM_DB_NAME:
+        import MySQLdb
         conn = MySQLdb.connect(host=SWIM_DB_HOST,
                                user=SWIM_DB_USER,
                                passwd=SWIM_DB_PW,

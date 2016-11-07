@@ -1,0 +1,30 @@
+db:
+  image: postgres
+  environment:
+   - POSTGRES_PASSWORD=mysecretpassword 
+  volumes:
+   - /var/lib/postgresql/data 
+api:
+  image: mpo
+  ports:
+   - 8443:8443
+  links:
+   - db
+  command: api
+web:
+  image: mpo
+  ports:
+   - 9443:9443
+  links:
+   - api
+  command: web
+#uncomment and run once
+#init:
+#  image: mpo
+#  links:
+#   - db
+#  environment:
+#   - POSTGRES_PASSWORD=mysecretpassword 
+#  command: init
+# or run this
+#docker run -e POSTGRES_PASSWORD=mysecretpassword --link mpo_db_1:db -it --rm mpo init
