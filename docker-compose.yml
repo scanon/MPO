@@ -5,14 +5,14 @@ db:
   volumes:
    - /var/lib/postgresql/data 
 api:
-  image: mpo
+  image: nersc/mpo
   ports:
    - 8443:8443
   links:
    - db
   command: api
 web:
-  image: mpo
+  image: nersc/mpo
   ports:
    - 9443:9443
   links:
